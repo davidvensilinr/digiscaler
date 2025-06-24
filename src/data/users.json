@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "email": "creator@example.com",
+      "password": "creator123",
+      "type": "creator",
+      "name": "Alex Creator"
+    },
+    {
+      "email": "brand@example.com",
+      "password": "brand123",
+      "type": "brand",
+      "name": "Nike Brand"
+    }
+  ]
+}
