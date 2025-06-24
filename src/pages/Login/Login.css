@@ -1,0 +1,163 @@
+:root {
+  --ig-primary: #405DE6;
+  --ig-secondary: #833AB4;
+  --ig-tertiary: #C13584;
+  --ig-gradient: linear-gradient(45deg, var(--ig-primary), var(--ig-secondary), var(--ig-tertiary));
+  --ig-light: #f5f7fa;
+  --ig-dark: #2c3e50;
+  --ig-text: #7f8c8d;
+  --ig-error: #e74c3c;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--ig-light);
+  padding: 1rem;
+  background-image: radial-gradient(circle at 20% 50%, rgba(64, 93, 230, 0.1) 0%, transparent 50%);
+}
+
+.login-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: var(--ig-gradient);
+}
+
+.login-card h2 {
+  color: var(--ig-dark);
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+  background: var(--ig-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.login-card p {
+  color: var(--ig-text);
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--ig-dark);
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--ig-primary);
+  box-shadow: 0 0 0 3px rgba(64, 93, 230, 0.1);
+}
+
+.login-button {
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--ig-gradient);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.login-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--ig-primary);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(64, 93, 230, 0.3);
+}
+
+.login-button:hover::before {
+  opacity: 1;
+}
+
+.login-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.error-message {
+  color: var(--ig-error);
+  background-color: #fdecea;
+  padding: 0.8rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  border-left: 4px solid var(--ig-error);
+}
+
+.signup-link {
+  margin-top: 1.5rem;
+  color: var(--ig-text);
+  font-size: 0.9rem;
+}
+
+.signup-link a {
+  color: var(--ig-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.signup-link a:hover {
+  color: var(--ig-secondary);
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 1.5rem;
+  }
+}

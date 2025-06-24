@@ -1,0 +1,185 @@
+:root {
+  --ig-primary: #405DE6;
+  --ig-secondary: #833AB4;
+  --ig-tertiary: #C13584;
+  --ig-accent: #FD1D1D;
+  --ig-yellow: #F56040;
+  --ig-orange: #FFDC80;
+  --ig-gradient: linear-gradient(45deg, var(--ig-primary), var(--ig-secondary), var(--ig-tertiary), var(--ig-accent), var(--ig-yellow), var(--ig-orange));
+  --ig-light: #f8f9fb;
+  --ig-dark: #2c3e50;
+  --ig-text: #7f8c8d;
+  --ig-card-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.explore-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--ig-light);
+}
+
+.explore-title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2.8rem;
+  color: var(--ig-dark);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  background: var(--ig-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.user-type-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  gap: 1rem;
+}
+
+.toggle-btn {
+  padding: 0.6rem 2rem;
+  border: 2px solid transparent;
+  border-radius: 30px;
+  background-color: #e3e7f0;
+  color: var(--ig-dark);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background-color: #d5dcf5;
+}
+
+.toggle-btn.active {
+  background: var(--ig-gradient);
+  color: white;
+  border-color: var(--ig-primary);
+}
+
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--ig-card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+.profile-image {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: var(--ig-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-card h3 {
+  margin: 0.8rem 0 0.3rem;
+  font-size: 1.2rem;
+  color: var(--ig-dark);
+  font-weight: 600;
+}
+
+.profile-card p {
+  margin: 0;
+  color: var(--ig-text);
+  font-size: 0.95rem;
+}
+
+.connect-btn {
+  margin-top: 1.2rem;
+  padding: 0.6rem 1.8rem;
+  background: var(--ig-gradient);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.connect-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--ig-primary);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.connect-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 107, 255, 0.3);
+}
+
+.connect-btn:hover::before {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .profiles-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .explore-container {
+    padding: 2rem 1rem;
+  }
+
+  .explore-title {
+    font-size: 2rem;
+  margin-bottom: 1.5rem;
+  }
+
+  .profiles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .toggle-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
+}

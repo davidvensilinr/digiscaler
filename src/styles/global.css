@@ -1,0 +1,193 @@
+/* global.css - Base styles and variables */
+
+/* ================ */
+/* CSS Variables - Instagram Theme */
+/* ================ */
+:root {
+    --background-color: #f7f9fc;
+    --background-alt: #ffffff;
+    --border-color: #ddd;
+    --border-radius-sm: 6px;
+    --border-radius-lg: 12px;
+    --border-radius-xl: 20px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --text-color: #333;
+    --text-light: #888;
+    --text-lighter: #aaa;
+    --primary-color: #1976d2;
+    --primary-light: rgba(25, 118, 210, 0.2);
+    --error-color: #d32f2f;
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --transition-fast: 0.2s ease-in-out;
+  
+    --ig-gradient: linear-gradient(135deg, #6e8efb, #a777e3);
+    --ig-gradient-reverse: linear-gradient(135deg, #a777e3, #6e8efb);
+    
+    --dark-card: #1f1f1f;
+    --dark-bg: #121212;
+    --dark-border: #333;
+    --dark-text: #f1f1f1;
+  
+  /* Instagram Color Palette */
+  --ig-primary: #405DE6;
+  --ig-secondary: #833AB4;
+  --ig-tertiary: #C13584;
+  --ig-accent: #FD1D1D;
+  --ig-yellow: #F56040;
+  --ig-orange: #FFDC80;
+  --ig-gradient: linear-gradient(45deg, var(--ig-primary), var(--ig-secondary), var(--ig-tertiary), var(--ig-accent), var(--ig-yellow), var(--ig-orange));
+  --ig-gradient-reverse: linear-gradient(45deg, var(--ig-orange), var(--ig-yellow), var(--ig-accent), var(--ig-tertiary), var(--ig-secondary), var(--ig-primary));
+  
+  /* Colors */
+  --primary-color: var(--ig-primary);
+  --primary-dark: #3548b5;
+  --primary-light: rgba(64, 93, 230, 0.1);
+  --secondary-color: var(--ig-tertiary);
+  --accent-color: var(--ig-accent);
+  --text-color: #2c3e50;
+  --text-light: #7f8c8d;
+  --text-lighter: #bdc3c7;
+  --background-color: #ffffff;
+  --background-alt: #f8f9fa;
+  --border-color: #e1e3e6;
+  --error-color: #e74c3c;
+  --success-color: #2ecc71;
+  --warning-color: #f39c12;
+
+  /* Dark Mode Colors */
+  --dark-bg: #121212;
+  --dark-card: #1e1e1e;
+  --dark-text: #e0e0e0;
+  --dark-border: #333;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 3rem;
+
+  /* Typography */
+  --font-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-heading: 'Inter', var(--font-base);
+  --font-monospace: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.125rem;
+  --line-height-base: 1.6;
+  --line-height-heading: 1.3;
+
+  /* Borders */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 24px;
+  --border-width: 1px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 15px 35px rgba(0, 0, 0, 0.15);
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.45s ease;
+  --transition-bounce: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+  /* Z-index */
+  --z-index-dropdown: 100;
+  --z-index-sticky: 200;
+  --z-index-modal: 300;
+  --z-index-toast: 400;
+}
+
+/* ================ */
+/* Base Styles */
+/* ================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+  }
+}
+
+/* ================ */
+/* Typography */
+/* ================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: var(--line-height-heading);
+  margin-bottom: var(--space-md);
+  font-weight: 700;
+}
+
+h1 { 
+  font-size: 2.5rem;
+  background: var(--ig-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ... (other heading styles) ... */
+
+/* ================ */
+/* Utility Classes */
+/* ================ */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-gradient {
+  background: var(--ig-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ... (other utility classes) ... */
+
+/* ================ */
+/* Animations */
+/* ================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn var(--transition-normal);
+}
