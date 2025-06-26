@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* navbar.css - Navigation bar styles */
 
 .navbar {
@@ -10,6 +11,16 @@
   backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.8);
   transition: all var(--transition-normal);
+=======
+/* Navbar container */
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }
 
 .navbar-container {
@@ -20,6 +31,7 @@
   margin: 0 auto;
 }
 
+<<<<<<< HEAD
 .navbar-logo {
   font-size: 1.5rem;
   font-weight: bold;
@@ -39,10 +51,25 @@
 .nav-links {
   display: flex;
   gap: var(--space-lg);
+=======
+/* Logo */
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   align-items: center;
 }
 
 .nav-link {
+<<<<<<< HEAD
   color: var(--text-color);
   text-decoration: none;
   font-weight: 500;
@@ -93,6 +120,35 @@
   background: none;
   border: none;
   padding: var(--space-xs);
+=======
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #666;
+}
+
+/* Button styles */
+.nav-button {
+  background-color: #4a6bff;
+  color: white !important;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #3a5bef;
+}
+
+/* Hamburger menu - hidden by default */
+.hamburger {
+  display: none;
+  cursor: pointer;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }
 
 .hamburger .bar {
@@ -100,10 +156,18 @@
   width: 25px;
   height: 3px;
   margin: 5px auto;
+<<<<<<< HEAD
   background: var(--ig-gradient);
   transition: all var(--transition-fast);
 }
 
+=======
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+
+/* Responsive design */
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -127,12 +191,21 @@
     top: 70px;
     gap: 0;
     flex-direction: column;
+<<<<<<< HEAD
     background-color: var(--background-color);
     width: 100%;
     text-align: center;
     transition: left var(--transition-normal);
     padding: var(--space-md) 0;
     box-shadow: var(--shadow-lg);
+=======
+    background-color: #ffffff;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    padding: 1rem 0;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   }
 
   .nav-links.active {
@@ -140,6 +213,7 @@
   }
 
   .nav-link {
+<<<<<<< HEAD
     margin: var(--space-sm) 0;
     padding: var(--space-xs) 0;
     color: var(--text-color);
@@ -165,4 +239,15 @@
   .nav-links {
     background-color: var(--dark-card);
   }
+=======
+    margin: 1rem 0;
+    padding: 0.5rem 0;
+  }
+
+  .nav-button {
+    margin: 0.5rem auto;
+    width: 80%;
+    text-align: center;
+  }
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }

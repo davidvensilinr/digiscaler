@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
   --ig-primary: #405DE6;
   --ig-secondary: #833AB4;
@@ -9,16 +10,27 @@
   --ig-error: #e74c3c;
 }
 
+=======
+/* Main container */
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+<<<<<<< HEAD
   background-color: var(--ig-light);
   padding: 1rem;
   background-image: radial-gradient(circle at 20% 50%, rgba(64, 93, 230, 0.1) 0%, transparent 50%);
 }
 
+=======
+  background-color: #f5f7fa;
+  padding: 1rem;
+}
+
+/* Login card */
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 .login-card {
   background: white;
   border-radius: 12px;
@@ -27,6 +39,7 @@
   width: 100%;
   max-width: 400px;
   text-align: center;
+<<<<<<< HEAD
   position: relative;
   overflow: hidden;
 }
@@ -56,6 +69,22 @@
   margin-bottom: 2rem;
 }
 
+=======
+}
+
+.login-card h2 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.login-card p {
+  color: #7f8c8d;
+  margin-bottom: 2rem;
+}
+
+/* Form styles */
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 .form-group {
   margin-bottom: 1.5rem;
   text-align: left;
@@ -64,7 +93,11 @@
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
+<<<<<<< HEAD
   color: var(--ig-dark);
+=======
+  color: #2c3e50;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   font-weight: 500;
 }
 
@@ -74,11 +107,16 @@
   border: 1px solid #e0e0e0;
   border-radius: 6px;
   font-size: 1rem;
+<<<<<<< HEAD
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+=======
+  transition: border-color 0.3s ease;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }
 
 .form-group input:focus {
   outline: none;
+<<<<<<< HEAD
   border-color: var(--ig-primary);
   box-shadow: 0 0 0 3px rgba(64, 93, 230, 0.1);
 }
@@ -87,12 +125,23 @@
   width: 100%;
   padding: 0.8rem;
   background: var(--ig-gradient);
+=======
+  border-color: #4a6bff;
+}
+
+/* Button */
+.login-button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #4a6bff;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   color: white;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+<<<<<<< HEAD
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
   overflow: hidden;
@@ -130,21 +179,49 @@
 
 .error-message {
   color: var(--ig-error);
+=======
+  transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.login-button:hover {
+  background-color: #3a5bef;
+}
+
+.login-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Error message */
+.error-message {
+  color: #e74c3c;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   background-color: #fdecea;
   padding: 0.8rem;
   border-radius: 6px;
   margin-bottom: 1.5rem;
   font-size: 0.9rem;
+<<<<<<< HEAD
   border-left: 4px solid var(--ig-error);
 }
 
 .signup-link {
   margin-top: 1.5rem;
   color: var(--ig-text);
+=======
+}
+
+/* Signup link */
+.signup-link {
+  margin-top: 1.5rem;
+  color: #7f8c8d;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   font-size: 0.9rem;
 }
 
 .signup-link a {
+<<<<<<< HEAD
   color: var(--ig-primary);
   text-decoration: none;
   font-weight: 500;
@@ -156,6 +233,18 @@
   text-decoration: underline;
 }
 
+=======
+  color: #4a6bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design */
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 @media (max-width: 480px) {
   .login-card {
     padding: 1.5rem;

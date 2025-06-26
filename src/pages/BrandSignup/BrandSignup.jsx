@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import { signup } from '../../services/api';
+=======
+import usersData from '../../data/users.json';
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 import './BrandSignup.css';
 
 const BrandSignup = ({ onSignup }) => {
@@ -58,6 +62,7 @@ const BrandSignup = ({ onSignup }) => {
     setIsSubmitting(true);
     setError('');
 
+<<<<<<< HEAD
     const newUser = {
       email: formData.email,
       password: formData.password,
@@ -84,6 +89,55 @@ const BrandSignup = ({ onSignup }) => {
       })
       .catch((err) => setError(err.message))
       .finally(() => setIsSubmitting(false));
+=======
+    const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+    // Check if email already exists
+    if ([...usersData.users, ...registeredUsers].some(user => user.email === formData.email)) {
+      setError('Email already exists');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Simulate API call delay
+    setTimeout(() => {
+      // Create new user object (in a real app, this would be an API call)
+      const newUser = {
+        email: formData.email,
+        password: formData.password,
+        name: formData.name,
+        type: 'brand',
+        brandData: {
+          location: formData.location,
+          pincode: formData.pincode,
+          description: formData.description,
+          expectedReach: formData.expectedReach,
+          focus: formData.focus,
+          rating: formData.rating,
+          budget: formData.budget,
+          // In a real app, you would upload images to a server
+          productImages: formData.productImages.map(img => img.name)
+        }
+      };
+
+      // Persist new user to localStorage so it can be used for login later
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      registeredUsers.push(newUser);
+      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+
+      // Call parent callback to log user in immediately
+      if (onSignup) {
+        onSignup(newUser.email, {
+          name: newUser.name,
+          email: newUser.email,
+          type: newUser.type,
+        });
+      }
+
+      // Redirect to homepage
+      navigate('/');
+      setIsSubmitting(false);
+    }, 1000);
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   };
 
   return (

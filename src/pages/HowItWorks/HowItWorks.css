@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
   --ig-primary: #405DE6;
   --ig-secondary: #833AB4;
@@ -19,12 +20,24 @@
   background-color: var(--ig-light);
 }
 
+=======
+/* Main container */
+.how-it-works {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: #333;
+}
+
+/* Hero section */
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 .hero-section {
   text-align: center;
   margin-bottom: 3rem;
 }
 
 .hero-section h1 {
+<<<<<<< HEAD
   font-size: 2.75rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -43,11 +56,27 @@
   line-height: 1.7;
 }
 
+=======
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Steps container */
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 .steps-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
+<<<<<<< HEAD
   margin: 4rem 0;
 }
 
@@ -69,10 +98,34 @@
 .step-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+=======
+  margin: 3rem 0;
+}
+
+/* Step card */
+.step-card {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }
 
 .step-number {
   position: absolute;
+<<<<<<< HEAD
   top: 12px;
   right: 16px;
   font-size: 3.5rem;
@@ -114,6 +167,45 @@
   font-weight: 700;
   margin-bottom: 1.8rem;
   color: var(--ig-dark);
+=======
+  top: 10px;
+  right: 10px;
+  font-size: 3rem;
+  font-weight: bold;
+  color: rgba(74, 107, 255, 0.1);
+  line-height: 1;
+}
+
+.step-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.step-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.step-card p {
+  color: #7f8c8d;
+  line-height: 1.6;
+}
+
+/* CTA section */
+.cta-section {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+  border-radius: 12px;
+}
+
+.cta-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }
 
 .cta-buttons {
@@ -130,6 +222,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   border: 2px solid transparent;
+<<<<<<< HEAD
   font-size: 1rem;
   min-width: 180px;
 }
@@ -157,10 +250,22 @@
 
 .cta-button.primary:hover::before {
   opacity: 1;
+=======
+}
+
+.cta-button.primary {
+  background-color: #4a6bff;
+  color: white;
+}
+
+.cta-button.primary:hover {
+  background-color: #3a5bef;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }
 
 .cta-button.secondary {
   background-color: transparent;
+<<<<<<< HEAD
   color: var(--ig-primary);
   border: 2px solid var(--ig-primary);
 }
@@ -183,13 +288,45 @@
     min-width: 100%;
   }
 
+=======
+  color: #4a6bff;
+  border-color: #4a6bff;
+}
+
+.cta-button.secondary:hover {
+  background-color: #4a6bff;
+  color: white;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  
+  .steps-container {
+    gap: 1.5rem;
+  }
+  
+  .step-card {
+    min-width: 100%;
+  }
+  
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   .cta-buttons {
     flex-direction: column;
     align-items: center;
   }
+<<<<<<< HEAD
 
   .cta-button {
     width: 100%;
     max-width: 280px;
+=======
+  
+  .cta-button {
+    width: 100%;
+    max-width: 250px;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   }
 }

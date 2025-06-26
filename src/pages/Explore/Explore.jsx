@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { useState, useEffect } from 'react';
 import { fetchUsers } from '../../services/api';
+=======
+import { useState } from 'react';
+import usersData from '../../data/users.json';
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 import { useNavigate } from 'react-router-dom';
 import './Explore.css';
 
@@ -8,6 +13,7 @@ const Explore = ({ user, userType: initialUserType = null }) => {
   const navigate = useNavigate();
   const currentEmail = user?.email;
 
+<<<<<<< HEAD
   const [creators, setCreators] = useState([]);
   const [brands, setBrands] = useState([]);
 
@@ -24,6 +30,20 @@ const Explore = ({ user, userType: initialUserType = null }) => {
     };
     loadUsers();
   }, [currentEmail]);
+=======
+  // Load data from bundled json + any newly registered users
+  const baseUsers = usersData.users;
+  const localUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+
+  const mergedUsers = [...baseUsers, ...localUsers];
+
+  const creators = mergedUsers.filter(u => u.type === 'creator' && u.email !== currentEmail);
+  const brands = mergedUsers.filter(u => u.type === 'brand' && u.email !== currentEmail);
+
+  const toggleUserType = () => {
+    setUserType(userType === 'creator' ? 'brand' : 'creator');
+  };
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 
   return (
     <div className="explore-container">

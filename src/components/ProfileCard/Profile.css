@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* profile.css - Profile card and related components */
 
 .profile-card {
@@ -154,3 +155,42 @@
     color: var(--text-lighter);
   }
 }
+=======
+.profile-card {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 16px;
+  width: 300px;
+  margin: 10px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.platform-links a {
+  margin: 0 5px;
+  text-decoration: none;
+  color: #0366d6;
+  font-weight: bold;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background-color: #0366d6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #024d9c;
+}
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db

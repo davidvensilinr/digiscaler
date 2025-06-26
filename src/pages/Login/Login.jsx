@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+<<<<<<< HEAD
 import { login } from '../../services/api';
+=======
+import usersData from '../../data/users.json';
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 import './Login.css';
 
 const Login = ({ onLogin }) => {
@@ -15,6 +19,7 @@ const Login = ({ onLogin }) => {
     setIsLoading(true);
     setError('');
 
+<<<<<<< HEAD
     // Call backend
     login(email, password)
       .then((data) => {
@@ -26,6 +31,30 @@ const Login = ({ onLogin }) => {
         setError(err.message);
       })
       .finally(() => setIsLoading(false));
+=======
+    // Simulate API call delay
+    setTimeout(() => {
+      const localUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      const allUsers = [...usersData.users, ...localUsers];
+      const user = allUsers.find(
+        (user) => user.email === email && user.password === password
+      );
+
+      if (user) {
+        // Notify parent (App) of successful login
+        onLogin(user.email, {
+          name: user.name,
+          email: user.email,
+          type: user.type,
+          avatar: user.creatorData?.profilePic || user.avatar || '',
+        });
+        navigate('/');
+      } else {
+        setError('Invalid email or password');
+      }
+      setIsLoading(false);
+    }, 800);
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   };
 
   return (

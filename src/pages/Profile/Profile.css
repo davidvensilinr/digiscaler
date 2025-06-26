@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
   --ig-primary: #405DE6;
   --ig-secondary: #833AB4;
@@ -9,11 +10,18 @@
   --ig-error: #f44336;
 }
 
+=======
+/* pages/Profile/Profile.css */
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 .profile-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
+<<<<<<< HEAD
   background-color: var(--ig-light);
+=======
+  background-color: #f9f9f9;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -26,6 +34,7 @@
 }
 
 .profile-header h1 {
+<<<<<<< HEAD
   color: var(--ig-dark);
   margin: 0;
   background: var(--ig-gradient);
@@ -36,17 +45,33 @@
 
 .edit-button {
   background: var(--ig-gradient);
+=======
+  color: #333;
+  margin: 0;
+}
+
+.edit-button {
+  background-color: #4a6fa5;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   color: white;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
+<<<<<<< HEAD
   transition: transform 0.2s ease;
 }
 
 .edit-button:hover {
   transform: translateY(-2px);
+=======
+  transition: background-color 0.3s;
+}
+
+.edit-button:hover {
+  background-color: #3a5a80;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }
 
 .profile-details {
@@ -63,22 +88,32 @@
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
+<<<<<<< HEAD
   border: 3px solid white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+=======
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }
 
 .avatar-placeholder {
   width: 150px;
   height: 150px;
   border-radius: 50%;
+<<<<<<< HEAD
   background: var(--ig-gradient);
+=======
+  background-color: #4a6fa5;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
   font-weight: bold;
+<<<<<<< HEAD
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+=======
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }
 
 .info-section {
@@ -87,12 +122,20 @@
 
 .info-section h2 {
   margin-top: 0;
+<<<<<<< HEAD
   color: var(--ig-dark);
+=======
+  color: #333;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }
 
 .info-section p {
   margin: 0.5rem 0;
+<<<<<<< HEAD
   color: var(--ig-text);
+=======
+  color: #555;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }
 
 .profile-form {
@@ -109,7 +152,11 @@
 
 .form-group label {
   font-weight: bold;
+<<<<<<< HEAD
   color: var(--ig-dark);
+=======
+  color: #333;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }
 
 .form-group input,
@@ -118,6 +165,7 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1rem;
+<<<<<<< HEAD
   transition: border-color 0.3s ease;
 }
 
@@ -125,6 +173,8 @@
 .form-group textarea:focus {
   outline: none;
   border-color: var(--ig-primary);
+=======
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }
 
 .form-group textarea {
@@ -139,33 +189,55 @@
 }
 
 .save-button {
+<<<<<<< HEAD
   background-color: var(--ig-success);
+=======
+  background-color: #4CAF50;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   color: white;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
+<<<<<<< HEAD
   transition: background-color 0.3s, transform 0.2s;
+=======
+  transition: background-color 0.3s;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }
 
 .save-button:hover {
   background-color: #3e8e41;
+<<<<<<< HEAD
   transform: translateY(-2px);
 }
 
 .cancel-button {
   background-color: var(--ig-error);
+=======
+}
+
+.cancel-button {
+  background-color: #f44336;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   color: white;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
+<<<<<<< HEAD
   transition: background-color 0.3s, transform 0.2s;
+=======
+  transition: background-color 0.3s;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }
 
 .cancel-button:hover {
   background-color: #d32f2f;
+<<<<<<< HEAD
   transform: translateY(-2px);
+=======
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 }

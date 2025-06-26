@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { jsPDF } from 'jspdf';
 import './ChatBox.css';
+<<<<<<< HEAD
 import { fetchConversation, sendMessage, fetchUsers } from '../../services/api';
 
 // Utility to get user details for agreements (brand/influencer names)
@@ -10,6 +11,22 @@ const getUserByEmail = async (email) => {
   const brandsRes = await fetchUsers('brand');
   const all = [...creatorsRes.users, ...brandsRes.users];
   return all.find((u) => u.email === email);
+=======
+import messagesSeed from '../../data/messages.json';
+import usersData from '../../data/users.json';
+
+// Helpers to persist conversations in localStorage (front-end demo)
+const loadConversations = () => {
+  try {
+    const stored = JSON.parse(localStorage.getItem('conversations'));
+    if (stored && Array.isArray(stored)) return stored;
+  } catch (_) {}
+  return messagesSeed.conversations;
+};
+
+const saveConversations = (convs) => {
+  localStorage.setItem('conversations', JSON.stringify(convs));
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 };
 
 const ChatBox = ({ currentUserId, recipientId }) => {
@@ -20,6 +37,7 @@ const ChatBox = ({ currentUserId, recipientId }) => {
   const fileInputRef = useRef(null);
   const messagesEndRef = useRef(null);
 
+<<<<<<< HEAD
   // Load messages for current conversation from backend
   useEffect(() => {
     const load = async () => {
@@ -31,6 +49,14 @@ const ChatBox = ({ currentUserId, recipientId }) => {
       }
     };
     load();
+=======
+  // Load messages for current conversation
+  useEffect(() => {
+    const conversation = loadConversations().find(
+      (c) => c.participants.includes(currentUserId) && c.participants.includes(recipientId)
+    );
+    setMessages(conversation ? conversation.messages : []);
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   }, [currentUserId, recipientId]);
 
   // Auto-scroll
@@ -49,18 +75,28 @@ const ChatBox = ({ currentUserId, recipientId }) => {
     reader.readAsDataURL(file);
   };
 
+<<<<<<< HEAD
   const addDealRequest = () => {
     setAttachmentType('deal');
     setAttachmentData({ status: 'pending' });
     setNewMessage('[Deal done request]');
   };
 
+=======
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   const addAgreementAttachment = async () => {
     const amount = prompt('Enter agreed payment amount (USD):');
     if (!amount) return;
 
+<<<<<<< HEAD
     const sender = await getUserByEmail(currentUserId);
     const receiver = await getUserByEmail(recipientId);
+=======
+    const localUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+    const allUsers = [...usersData.users, ...localUsers];
+    const sender   = allUsers.find((u) => u.email === currentUserId);
+    const receiver = allUsers.find((u) => u.email === recipientId);
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 
     const brandName      = sender?.type === 'brand' ? sender.name : receiver?.name;
     const influencerName = sender?.type === 'creator' ? sender.name : receiver?.name;
@@ -90,8 +126,13 @@ const ChatBox = ({ currentUserId, recipientId }) => {
       fileInputRef.current?.click();
       return;
     }
+<<<<<<< HEAD
     if (type === 'deal') {
       addDealRequest();
+=======
+    if (type === 'agreement') {
+      addAgreementAttachment();
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
       return;
     }
     if (type === 'payment') {
@@ -121,6 +162,7 @@ const ChatBox = ({ currentUserId, recipientId }) => {
     setAttachmentType(null);
     setAttachmentData(null);
 
+<<<<<<< HEAD
     // Persist to backend
     sendMessage({ senderId: currentUserId, recipientId, text: newMessage.trim(), attachment: attachmentData ? { type: attachmentType, ...attachmentData } : null })
       .catch((err) => console.error(err));
@@ -134,11 +176,45 @@ const ChatBox = ({ currentUserId, recipientId }) => {
     const amount = requestMsg.attachment.amount;
     const sender = await getUserByEmail(currentUserId);
     const receiver = await getUserByEmail(recipientId);
+=======
+    // Persist conversation
+    const convs = loadConversations();
+    let conv = convs.find(
+      (c) => c.participants.includes(currentUserId) && c.participants.includes(recipientId)
+    );
+    if (!conv) {
+      conv = { id: Date.now().toString(), participants: [currentUserId, recipientId], messages: [] };
+      convs.push(conv);
+    }
+    conv.messages.push(newMsg);
+    saveConversations(convs);
+  };
+
+  // Accept payment request
+  const acceptPayment = (requestMsg) => {
+    // update original message status
+    const convs = loadConversations();
+    const conv = convs.find((c) => c.participants.includes(currentUserId) && c.participants.includes(recipientId));
+    if (!conv) return;
+    const msgIndex = conv.messages.findIndex((m) => m.id === requestMsg.id);
+    if (msgIndex === -1) return;
+    conv.messages[msgIndex].attachment.status = 'accepted';
+
+    // create agreement message
+    const amount = requestMsg.attachment.amount;
+    const localUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+    const allUsers = [...usersData.users, ...localUsers];
+    const sender   = allUsers.find((u) => u.email === currentUserId);
+    const receiver = allUsers.find((u) => u.email === recipientId);
+    const brandName      = sender?.type === 'brand' ? sender.name : receiver?.name;
+    const influencerName = sender?.type === 'creator' ? sender.name : receiver?.name;
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 
     const doc = new jsPDF();
     doc.setFontSize(16);
     doc.text('Collaboration Agreement', 10, 20);
     doc.setFontSize(12);
+<<<<<<< HEAD
     const agreementText = doc.splitTextToSize(
   `BUSINESS AGREEMENT
 
@@ -173,6 +249,13 @@ ${receiver.name}                      ${sender.name}`,
   180
 );
 doc.text(agreementText, 10, 40);
+=======
+    const lines = doc.splitTextToSize(
+      `On ${new Date().toLocaleDateString()}, brand ${brandName} has decided that influencer ${influencerName} will be paid $${amount} as per the rate set by the brand.`,
+      180
+    );
+    doc.text(lines, 10, 40);
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
     const blob = doc.output('blob');
     const url  = URL.createObjectURL(blob);
     const name = `agreement_${Date.now()}.pdf`;
@@ -185,6 +268,7 @@ doc.text(agreementText, 10, 40);
       attachment: { type: 'agreement', url, name },
     };
 
+<<<<<<< HEAD
     sendMessage({ senderId: currentUserId, recipientId, text: '', attachment: { type: 'agreement', url, name } })
       .then(() => {
         // Optimistically update UI
@@ -266,6 +350,13 @@ doc.text('Influencer', 120, 123);
   const declineDeal = async (requestMsg) => {
     setMessages(prev => prev.map(m => m.id === requestMsg.id ? { ...m, attachment: { ...m.attachment, status: 'declined' } } : m));
     sendMessage({ senderId: currentUserId, recipientId, text: '', attachment: { type: 'deal', status: 'declined' } }).catch(err => console.error(err));
+=======
+    conv.messages.push(agreementMsg);
+    saveConversations(convs);
+
+    // update local state UI
+    setMessages([...conv.messages]);
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   };
 
   /* ---------------- Render helpers ---------------- */
@@ -275,6 +366,7 @@ doc.text('Influencer', 120, 123);
     if (att.type === 'picture') {
       return <img src={att.url} alt="attachment" className="chat-image" />;
     }
+<<<<<<< HEAD
     if (att.type === 'deal-doc') {
       return (
         <a href={att.url} target="_blank" rel="noopener noreferrer" className="attachment-link">📄 Deal Document</a>
@@ -295,6 +387,8 @@ doc.text('Influencer', 120, 123);
         </span>
       );
     }
+=======
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
     if (att.type === 'agreement') {
       return (
         <a href={att.url} target="_blank" rel="noopener noreferrer" className="attachment-link">
@@ -307,6 +401,7 @@ doc.text('Influencer', 120, 123);
         <span className="attachment-link">
           💳 Payment Request ${att.amount}
           {att.status === 'pending' && msg.senderId !== currentUserId && (
+<<<<<<< HEAD
             <>
               <button className="accept-btn" onClick={() => acceptPayment(msg)}>Accept</button>
               <button className="decline-btn" onClick={() => declinePayment(msg)}>Decline</button>
@@ -314,6 +409,11 @@ doc.text('Influencer', 120, 123);
           )}
           {att.status === 'accepted' && <span> (accepted)</span>}
           {att.status === 'declined' && <span> (declined)</span>}
+=======
+            <button className="accept-btn" onClick={() => acceptPayment(msg)}>Accept</button>
+          )}
+          {att.status === 'accepted' && <span> (accepted)</span>}
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
         </span>
       );
     }
@@ -344,8 +444,13 @@ doc.text('Influencer', 120, 123);
       {/* Input */}
       <form className="message-form" onSubmit={handleSendMessage}>
         <div className="attachment-buttons">
+<<<<<<< HEAD
           <button type="button" className="attachment-btn" onClick={() => handleAttachmentClick('deal')}>
             🤝 Deal Done
+=======
+          <button type="button" className="attachment-btn" onClick={() => handleAttachmentClick('agreement')}>
+            📄 Agreement
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
           </button>
           <button type="button" className="attachment-btn" onClick={() => handleAttachmentClick('picture')}>
             📷 Picture

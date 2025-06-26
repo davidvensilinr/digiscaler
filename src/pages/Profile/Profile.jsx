@@ -1,14 +1,22 @@
 // pages/Profile/Profile.jsx
 import React, { useState, useEffect } from 'react';
 import './Profile.css';
+<<<<<<< HEAD
 // import api helpers if needed in future
 
 const Profile = ({ user: initialUser }) => {
   const [user, setUser] = useState(initialUser);
+=======
+import usersData from '../../data/users.json';
+
+const Profile = () => {
+  const [user, setUser] = useState(null);
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({});
 
   useEffect(() => {
+<<<<<<< HEAD
     if (initialUser) {
       setFormData({
         name: initialUser.name,
@@ -18,6 +26,59 @@ const Profile = ({ user: initialUser }) => {
       });
     }
   }, [initialUser]);
+=======
+    const stored = localStorage.getItem('userData');
+    if (stored) {
+      const usr = JSON.parse(stored);
+      setUser({ ...usr, avatar: usr.avatar || usr.creatorData?.profilePic });
+      setFormData({
+        name: usr.name,
+        email: usr.email,
+        bio: usr.bio || '',
+        avatar: usr.avatar || usr.creatorData?.profilePic || ''
+      });
+      return;
+    }
+
+    const loggedInUserId = localStorage.getItem('loggedInUserId');
+    if (loggedInUserId) {
+      const localUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      const allUsers = [...usersData.users, ...localUsers];
+      const foundUser = allUsers.find(u => u.email === loggedInUserId);
+      if (foundUser) {
+        setUser({ ...foundUser, avatar: foundUser.avatar || foundUser.creatorData?.profilePic });
+        if (foundUser.type === 'brand') {
+          setFormData({
+            name: foundUser.name,
+            email: foundUser.email,
+            description: foundUser.brandData.description || '',
+            location: foundUser.brandData.location || '',
+            pincode: foundUser.brandData.pincode || '',
+            expectedReach: foundUser.brandData.expectedReach || '',
+            focus: foundUser.brandData.focus || '',
+            rating: foundUser.brandData.rating || '',
+            budget: foundUser.brandData.budget || '',
+            avatar: foundUser.avatar || foundUser.brandData?.profilePic || ''
+          });
+        } else {
+          setFormData({
+            name: foundUser.name,
+            email: foundUser.email,
+            bio: foundUser.creatorData.bio || '',
+            followerCount: foundUser.creatorData.followerCount || '',
+            pricing: foundUser.creatorData.pricing || '',
+            services: (foundUser.creatorData.services || []).join(', '),
+            youtube: foundUser.creatorData.platforms.youtube || '',
+            instagram: foundUser.creatorData.platforms.instagram || '',
+            tiktok: foundUser.creatorData.platforms.tiktok || '',
+            twitter: foundUser.creatorData.platforms.twitter || '',
+            avatar: foundUser.avatar || foundUser.creatorData?.profilePic || ''
+          });
+        }
+      }
+    }
+  }, []);
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -29,10 +90,43 @@ const Profile = ({ user: initialUser }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     // In a real app we would PATCH user details to backend.
     const updatedUser = { ...user, ...formData };
     setUser(updatedUser);
     setEditMode(false);
+=======
+    
+    // Update the user data
+    const updatedUser = {
+      ...user,
+      ...formData
+    };
+    
+    // Update the users array
+    const updatedUsers = usersData.users.map(u => 
+      u.id === user.id ? updatedUser : u
+    );
+    
+    // Persist to localStorage so data survives refresh
+
+    // 1. Update userData (active session)
+    localStorage.setItem('userData', JSON.stringify(updatedUser));
+
+    // 2. If this user exists in registeredUsers, update that record too
+    const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+    const idx = registeredUsers.findIndex(u => u.email === updatedUser.email);
+    if (idx >= 0) {
+      registeredUsers[idx] = updatedUser;
+      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+    }
+
+    // 3. Update local component state
+    setUser(updatedUser);
+    setEditMode(false);
+
+    alert('Profile updated successfully!');
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   };
 
   if (!user) {

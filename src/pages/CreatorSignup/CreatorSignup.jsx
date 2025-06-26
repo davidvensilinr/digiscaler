@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import { signup } from '../../services/api';
+=======
+import usersData from '../../data/users.json';
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 import './CreatorSignup.css';
 
 const CreatorSignup = ({ onSignup }) => {
@@ -79,7 +83,17 @@ const CreatorSignup = ({ onSignup }) => {
     setIsSubmitting(true);
     setError('');
 
+<<<<<<< HEAD
     // Email uniqueness will be handled by backend
+=======
+    const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+    // Check if email already exists
+    if ([...usersData.users, ...registeredUsers].some(user => user.email === formData.email)) {
+      setError('Email already exists');
+      setIsSubmitting(false);
+      return;
+    }
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
 
     // Validate at least one service selected
     if (formData.services.length === 0) {
@@ -88,6 +102,7 @@ const CreatorSignup = ({ onSignup }) => {
       return;
     }
 
+<<<<<<< HEAD
     const newUser = {
       email: formData.email,
       password: formData.password,
@@ -114,6 +129,45 @@ const CreatorSignup = ({ onSignup }) => {
         setError(err.message);
       })
       .finally(() => setIsSubmitting(false));
+=======
+    // Simulate API call delay
+    setTimeout(() => {
+      // Create new user object
+      const newUser = {
+        email: formData.email,
+        password: formData.password,
+        name: formData.name,
+        type: 'creator',
+        creatorData: {
+          profilePic: profilePicData,
+          platforms: formData.platforms,
+          services: formData.services,
+          pricing: formData.pricing,
+          followerCount: formData.followerCount,
+          bio: formData.bio
+        }
+      };
+
+      // Persist new user to localStorage so it can be used for login later
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      registeredUsers.push(newUser);
+      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+
+      // Call parent callback to log user in immediately
+      if (onSignup) {
+        onSignup(newUser.email, {
+          name: newUser.name,
+          email: newUser.email,
+          type: newUser.type,
+          avatar: profilePicData,
+        });
+      }
+
+      // Redirect to homepage
+      navigate('/');
+      setIsSubmitting(false);
+    }, 1000);
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
   };
 
   return (

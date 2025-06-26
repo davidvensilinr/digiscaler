@@ -15,16 +15,46 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+<<<<<<< HEAD
   // No persistent local storage; simply mark loading false on mount
   useEffect(() => {
+=======
+  // Check for logged-in user on initial load
+  useEffect(() => {
+    const loggedInUserId = localStorage.getItem('loggedInUserId');
+    if (loggedInUserId) {
+      // Safely parse stored user data (if any)
+      const storedData = localStorage.getItem('userData');
+      const userData = storedData ? JSON.parse(storedData) : {};
+      setUser({
+        id: loggedInUserId,
+        type: userData.type || 'creator', // 'creator' or 'brand'
+        ...userData
+      });
+    }
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
     setLoading(false);
   }, []);
 
   const handleLogin = (userId, userData) => {
+<<<<<<< HEAD
     setUser({ id: userId, ...userData });
   };
 
   const handleLogout = () => {
+=======
+    localStorage.setItem('loggedInUserId', userId);
+    localStorage.setItem('userData', JSON.stringify(userData));
+    setUser({
+      id: userId,
+      ...userData
+    });
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('loggedInUserId');
+    localStorage.removeItem('userData');
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
     setUser(null);
   };
 
@@ -59,7 +89,11 @@ const App = () => {
               user ? <ChatPage user={user} /> : <Navigate to="/login" />
             } />
             <Route path="/profile" element={
+<<<<<<< HEAD
               user ? <Profile user={user} /> : <Navigate to="/login" />
+=======
+              user ? <Profile /> : <Navigate to="/login" />
+>>>>>>> 4ba1158c8d85578c65bd23c69ed8c23e5093b1db
             } />
 
             {/* 404 fallback */}
